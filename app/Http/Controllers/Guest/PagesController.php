@@ -13,8 +13,10 @@ class PagesController extends Controller
 
         $trains = Train::all();
         // dd(Train::all());
+        
+        $today = today()->toDateString();
 
-        $trainsToday = Train::where('orario_partenza', '>=', (today()->toDateString()))->orderBy('orario_partenza', 'asc')->get();
+        $trainsToday = Train::where('orario_partenza', 'LIKE', "%{$today}%")->orderBy('orario_partenza', 'asc')->get();
         // dd($trainsToday);
         return view('welcome', compact('trains', 'trainsToday'));
     }
