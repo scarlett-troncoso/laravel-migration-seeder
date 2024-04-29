@@ -17,6 +17,6 @@ class PagesController extends Controller
         $trainsToday = Train::where('orario_partenza', '>=', (now()))->orderBy('orario_partenza', 'asc')->get();
         // dd($trainsToday);
 
-        return view('home', compact('trains', 'trainsToday'));
+        return view('welcome', compact('trains', 'trainsToday'));
     }
 }
